@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import bookReducer from './bookingSlice'
 import * as types from './types'
 
 // COUNTER REDUCER
@@ -27,7 +28,7 @@ const timerReducer = (state = initialTimerState, { type, payload }) => {
     case types.TICK:
       return {
         lastUpdate: payload.ts,
-        light: !!payload.light,
+        light: !payload.light,
       }
     default:
       return state
@@ -38,6 +39,7 @@ const timerReducer = (state = initialTimerState, { type, payload }) => {
 const reducers = {
   counter: counterReducer,
   timer: timerReducer,
+  book: bookReducer,
 }
 
 export default combineReducers(reducers)
