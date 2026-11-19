@@ -1,14 +1,15 @@
-import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import Link from 'next/link'
-import { startClock } from '../redux/actions'
-import Examples from '../components/examples'
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import Link from 'next/link';
+import { startClock } from '../redux/actions';
+import Examples from '../components/examples';
 
 const Index = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   useEffect(() => {
-    //  dispatch(startClock())
-  }, [dispatch])
+    dispatch(startClock());
+  }, [dispatch]);
 
   return (
     <>
@@ -17,7 +18,7 @@ const Index = () => {
         <a>Click to see current Redux State</a>
       </Link>
     </>
-  )
-}
+  );
+};
 
-export default Index
+export default Index;

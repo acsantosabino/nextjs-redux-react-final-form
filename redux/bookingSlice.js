@@ -1,33 +1,33 @@
+import axios from 'axios';
 
-import axios from 'axios'
-const initialState = {}
+const initialState = {};
 
-const url = 'http://localhost:3000/api/book'
+const url = 'http://localhost:3000/api/book';
 
-export const fetchBookingInfo = async id => {
-  try{
+export const fetchBookingInfo = async (id) => {
+  try {
     // Get to my backend.
-    const { data } = await axios.get(`${url}/${id}`)
-    console.log(data)
-    return data
+    const { data } = await axios.get(`${url}/${id}`);
+    console.log(data);
+    return data;
   } catch (e) {
-    throw e
+    return e;
   }
-}
+};
 
 export const postBookingInfo = async (id, input) => {
   try {
     // POST to my backend.
-    const { data } = await axios.post(`${url}/${id}`, input)
-    console.log(data)
-    return data
+    const { data } = await axios.post(`${url}/${id}`, input);
+    console.log(data);
+    return data;
   } catch (e) {
-    throw e
+    return e;
   }
-}
+};
 
 export default function bookReducer(state = initialState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case 'book/bookLoaded':
       return action.payload;
     default:
@@ -36,14 +36,14 @@ export default function bookReducer(state = initialState, action) {
 }
 // Thunk function
 export async function fetchBook(dispatch, getState) {
-  const book = await fetchBookingInfo(1)
-  dispatch({ type: 'book/bookLoaded', payload: book })
+  const book = await fetchBookingInfo(1);
+  dispatch({ type: 'book/bookLoaded', payload: book });
 }
 
-export function postBook(input){
+export function postBook(input) {
   return async function postBookAction(dispatch, getState) {
     console.log(input);
-    const book = await postBookingInfo(1, input)
-    dispatch({ type: 'book/bookLoaded', payload: book })
-  }
+    const book = await postBookingInfo(1, input);
+    dispatch({ type: 'book/bookLoaded', payload: book });
+  };
 }

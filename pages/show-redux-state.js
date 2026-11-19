@@ -1,5 +1,6 @@
-import { useSelector } from 'react-redux'
-import Link from 'next/link'
+import React from 'react';
+import { useSelector } from 'react-redux';
+import Link from 'next/link';
 
 const codeStyle = {
   background: '#ebebeb',
@@ -7,10 +8,10 @@ const codeStyle = {
   padding: 10,
   border: '1px solid grey',
   marginBottom: 10,
-}
+};
 
 const ShowReduxState = () => {
-  const state = useSelector((state) => state)
+  const state = useSelector((storedState) => storedState);
 
   return (
     <>
@@ -18,6 +19,7 @@ const ShowReduxState = () => {
         <code>{JSON.stringify(state, null, 4)}</code>
       </pre>
       <Link href="/">
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a>Go Back Home</a>
       </Link>
     </>
